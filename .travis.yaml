@@ -9,3 +9,17 @@ script:
   - docker run -e CI=true peatonet/docker-react npm run test
   
 language: generic 
+
+deploy: 
+  provider: elasticbeanstalk
+  region: "us-west-2"
+  app: "docker-react"
+  env: "Docker-env"
+  bucket-name: "elasticbeanstalk-us-west-2-345325425425"
+  bucket-path: "docker-react"
+  on:
+    branch: master
+  access_key_id: AWS_ACCESS_KEY
+  secret_access_key:
+    secure: AWS_SECRET_KEY    
+    
